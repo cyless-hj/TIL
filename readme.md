@@ -1,3 +1,5 @@
 # TIL (Today I Learned)
 
-## Git & Github O
+## Git & Github
+
+### Git의 의미
