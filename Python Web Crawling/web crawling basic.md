@@ -66,8 +66,8 @@
 - 서버에 요청시 header를 구성해 추가해 줌 즉, bot이 아님을 증명
 - header 확인
     - 브라우저에서 해당 사이트 접속 시 생성하는 헤더를 개발자 도구로 확인(브라우저 정보 : User-Agent)
-'''python
+```python
 url = df_menu['link'][2]
 headers = {"User-Agent" : "header 넣기"}
 res = requests.get(url, headers=headers)
-'''
+```
