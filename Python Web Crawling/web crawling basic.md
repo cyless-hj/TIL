@@ -71,3 +71,16 @@ url = df_menu['link'][2]
 headers = {"User-Agent" : "header 넣기"}
 res = requests.get(url, headers=headers)
 ```
+
+#### urlopen SSL 에러
+- 요청시 SSL 에러가 발생하면 보안연결을 시도해야 함
+- import ssl 패키지를 사용
+- ssl 연결 context()를 생성해서 context를 인수로 전달해야 함
+```python
+# [SSL: CERTIFICATE_VERIFY_FAILED]
+import ssl
+context = ssl._create_unverified_context()
+url = 'https://jolse.com/category/toners-mists/1019/'
+htmls = urlopen(url, context=context)
+htmls = htmls.read()
+```
