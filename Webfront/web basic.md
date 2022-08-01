@@ -1,14 +1,14 @@
-# 웹의 동작 과정
+## 웹의 동작 과정
 - 웹은 클라이언트가 요청을 보내면 웹 서버가 응답하는 방식으로 동작한다.
 
-# HTTP (Hyper Text Transfer Protocol)
+## HTTP (Hyper Text Transfer Protocol)
 - 인터넷 통신 규약
 
-# URL (Uniform Resource Locator)
+## URL (Uniform Resource Locator)
 - 인터넷 주소
 - ex) https://www.naver.com
 
-# HTML(Hyper Text Markup Language)
+## HTML(Hyper Text Markup Language)
 - 웹 브라우저에서 하이퍼텍스트 기능을 구현하는 웹 페이지 작성 언어
 - 하이퍼텍스트
 - 문서간에 서로 링크가 설정되어
@@ -31,3 +31,8 @@
     - ```<img>``` : 이미지 삽입
     - ```<hr>``` : 수평선 삽입
 - 태그는 대소문자 구별 없이 사용
+
+## 시멘틱(Semantic)
+- 의미의, 의미론적인
+- 역할과 기능에 맞는 요소로 영역 구분
+- 각 요소가 의미가 있다는 것
