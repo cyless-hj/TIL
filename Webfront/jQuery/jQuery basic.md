@@ -32,3 +32,17 @@
     - 네트워크 분산으로 병목 현상 피할 수 있으며
     - jQuery 파일의 다운로드에 따른 부하가 없으므로 트래픽 감소 효과
     - 그러나 라이브러리 제공 서버나 인터넷에 문제가 있을 경우 제공 받을 수 없음
+
+## jQuery로 가능한 시각적 효과
+- Basic 효과
+    - hide() / show() / toggle()
+- Sliding 효과
+    - slideDown() / slideUp() / slideToggle()
+- Fading 효과
+    - fadeIn() / fadeOut() / fadeToggle() / fadeTo() 
+- Animate 효과
+    - animate(속성)
+
+### 주의!
+- 슬라이딩 효과는 div 박스에 적용
+- 이미지에 슬라이딩 효과를 주면 전체적으로 축소/확대 되면서 사라졌다가 보여짐
