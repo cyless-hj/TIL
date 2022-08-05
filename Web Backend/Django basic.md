@@ -19,7 +19,9 @@
 
 ## Django 프로젝트
 1. Django install
-```pip install django'''
+```
+pip install django
+```
 
 2. Django app 시작
 
