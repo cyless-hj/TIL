@@ -52,3 +52,68 @@ python manage.py runserver
 
 6. 프로젝트 환경설정
 - 프로젝트에 포함되는 모든 app는 모두 설정파일에 등록해야 함
+
+## DB 처리
+- views.py에 .save() 메소드를 이용하여 저장
+
+## model 관련 코딩
+- models.py – 테이블 정의
+- admins.py – 정의된 테이블이 admin 화면에 보이게 함
+- manage.py makemigrations – 데이터베이스에 변경이 필요한 사항을 추출
+- manage.py migrate – 데이터베이스에 변경사항을 반영
+- manage.py runserver – 현재까지 작업 개발을 웹서버로 확인
+
+## 모델 생성(DB 생성)
+- models.py에 모델 객체 클래스를 생성한다.
+
+## models.py에서 정의할 수 있는 데이터
+- CharField : 문자열
+- DateField : 날짜
+- EmailField : e-mail => 
+    - EmailValidator라는 것을 통해 입력되는 문자열이 이메일 형식인지를 자동 체크해 줌
+    - 형식에서 어긋하면 저장과정에서 오류 발생
+- FileField : 파일을 저장할 수 있는 데이터 타입
+    - 파일의 이름을 저장하며 실제 파일은 upload_to라는 옵션에 지정되는 위치에 저장
+- TextField : 글자수의 제한이 없음
+- IntegerField : 숫자
+- BooleanField : T/F
+
+## DB에 반영
+```python
+python manage.py makemigrations
+python manage.py migrate
+```
+
+## DB shell 확인
+1. DB shell 열기
+```python
+python manage.py dbshell
+```
+
+2. Table 확인
+```
+.tables
+```
+
+3. Table 내용 확인
+```
+PRAGMA table_info(table_name);
+select * from table_name;
+```
+
+## 저장 후 출력 FLOW
+1. 사용자가 메모 입력 후 메모하기 클릭
+2. 서버로 메모(todoContent)파라미터와 함께 서버에 요청
+3. 서버는 해당 요청을 받은 후 http://127.0.0.1:8000/createTodo/ 의 url을 확인함
+    1. path('createTodo/', views.createTodo, name='createTodo’),
+    2. views.py의 createTodo 함수를 실행
+    3. createTodo함수는 전송된 파라미터를 DB에 저장 후
+    4. views.index는 DB에 있는 모든 메모를 갖고 와서 파라미터를 통해 template(index.html)에게 전달
+    5. template은 전달된 파라미터로 동적 코드를 생성(rendering)
+4. index.html코드 응답 반환: 위 모든 처리를 끝낸 후 index.html을 반환해야 함
+    1. vews.index에서 처리 후 index.html 반환(이 처리를 편하게 하기 위해 redirect 기능을 이용함)
+
+## { } 템플릿 태그
+- {} : html에 파이썬 코드를 추가할 수 있는 태그
+    - {% %} : 파이썬 문법
+    - {{ }} : 사용자에게 직접 보여주는 값
