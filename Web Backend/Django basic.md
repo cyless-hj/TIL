@@ -127,3 +127,12 @@ select * from table_name;
     - 참조되는 요소를 삭제하려고 할 때 해당요소를 참조하는 요소가 하나라도 존재한다면 에러를 발생
 - SET_NULL
     - 참조되는 요소가 삭제될 때 이름 참조하는 요소에 대해서 참조 값을 NULL로 설정
+
+## superuser 생성
+```python
+python manage.py createsuperuser
+```
+
+## 보안기능
+- csrf_token
+    - 올바르지 않은 방법으로 데이터가 전송되면 서버에서 발생된 csrf_token값과 해커가 보낸 csrf_token 값이 일치하지 않으므로 오류를 발생시켜 보안을 유지할 수 있다.
