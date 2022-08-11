@@ -136,3 +136,14 @@ python manage.py createsuperuser
 ## 보안기능
 - csrf_token
     - 올바르지 않은 방법으로 데이터가 전송되면 서버에서 발생된 csrf_token값과 해커가 보낸 csrf_token 값이 일치하지 않으므로 오류를 발생시켜 보안을 유지할 수 있다.
+
+## 템플릿의 기본 틀 작성하기
+- 템플릿에 공통을 나타나는 부분을 미리 작성 해 놓고 해당 파일을 포함시켜서 작성하기
+- 공통 부분을 base.html 템플릿으로 작성
+- 기존 코드의 공통부분을 삭제 하고 다음 코드를 작성
+```html
+{% extends 'base.html' %} <-- 1번 라인에 있어야 에러가 안남 -->
+{% block content %}
+
+{% endblock %} <-- 마지막 부분 -->
+```
