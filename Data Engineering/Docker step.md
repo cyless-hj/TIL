@@ -188,6 +188,11 @@ colorscheme pablo
 cd $HADOOP_CONF_DIR
 ```
 
+```
+vim hadoop-env.sh
+export JAVA_HOME=/home/big/java
+```
+
 22. core-site.xml 작성
 ```
 vim core-site.xml
@@ -203,10 +208,20 @@ vim core-site.xml
 ```
 vim hdfs-site.xml
 <configuration>
-	<property>
-		<name>dfs.replication</name>
-		<value>1</value>
-	</property>
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>/home/big/hadoop/namenode_dir</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>/home/big/hadoop/datanode_dir</value>
+    </property>
 </configuration>
 ```
 
