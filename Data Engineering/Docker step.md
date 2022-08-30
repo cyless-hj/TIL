@@ -37,7 +37,7 @@ useradd -m big
 ```
 cat /etc/passwd
 ```
-- big:x:1000:1000::/home/big:/bin/sh
+- big: x :1000:1000::/home/big:/bin/sh
     - big : 사용자명
     - x : 암호화된 password
     - 1000 : userId
@@ -47,7 +47,7 @@ cat /etc/passwd
     - /bin/sh : login 시 사용할 쉘
 
 4. big 사용자의 쉘 설정을 변경
-- big:x:1000:1000::/home/big:/bin/sh => big:x:1000:1000::/home/big:/bin/bash
+- big: x :1000:1000::/home/big:/bin/sh => big: x :1000:1000::/home/big:/bin/bash
 - /etc/passwd 파일을 수정
 ```
 vim /etc/passwd
@@ -84,7 +84,7 @@ docker commit <이미지이름> <도커허브유저명/컨테이너이름:버전
 docker push <도커허브유저명/컨테이너이름:버전>
 ```
 
-9. java download
+9. java download <br>
 **big 계정에서 진행**
 ```
 wget https://corretto.aws/downloads/latest/amazon-corretto-11-x64-linux-jdk.tar.gz
@@ -150,7 +150,7 @@ mkdir hadoop/datanode_dir
 mkdir hadoop/logs
 ```
 
-17. # yarn directory 생성
+17. yarn directory 생성
 ```
 mkdir -p hadoop/yarn/logs
 mkdir -p hadoop/yarn/local
