@@ -1,4 +1,4 @@
-# 도커를 이용한 Hadoop container 설정
+# 도커를 이용한 Hadoop container - Single Cluster 환경 구축
 
 1. 우분투 기반 컨테이너 실행
 ```
