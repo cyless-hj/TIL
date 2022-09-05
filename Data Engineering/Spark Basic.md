@@ -33,3 +33,7 @@
 - SparkContext를 통해 사용할 수 있는 모든 기능을 사용할 수 있다.
 - Spark의 Structured-API인 DataFrame과 Dataset, Spark SQL을 생성할 수 있다.
 - Spark Shell을 사용할 경우 spark라는 변수명으로 생성된다. 
+
+## 스파크를 왜 사용하는가?
+- 빠르다
+- hdfs를 지원한다. (질의를 통해 원하는 데이터를 꺼내올 수 있다.)
