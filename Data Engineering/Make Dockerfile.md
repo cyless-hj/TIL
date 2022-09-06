@@ -1,4 +1,9 @@
-# dockerfile 생성
+# dockerfile
+- dockerfile은 docker image를 구성하는 용도로 사용된다.
+
+## dockerfile vs docker-compose
+- dockerfile은 이미지를 생성하는 용도이고, docker compose는 여러 컨테이너를 
+수월하게 다루기 위해 사용한다.
 
 ## dockerfile 작성 문법
 - FROM : Docker Base Image (기반이 되는 이미지, <이미지 이름>:<태그> 형식으로 설정)

@@ -1,4 +1,9 @@
 # Docker-compose
+- docker compose는 이미 생성된 이미지를 기반으로 다수의 컨테이너를 일괄적으로 운용해야할 때 사용한다.
+
+## dockerfile vs docker-compose
+- dockerfile은 이미지를 생성하는 용도이고, docker compose는 여러 컨테이너를 
+수월하게 다루기 위해 사용한다.
 
 ## docker-compose 명령어
 - docker-compose up : 컨테이너를 생성하고 시작
