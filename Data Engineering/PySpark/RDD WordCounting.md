@@ -24,7 +24,7 @@ cloud = wc.generate_from_frequencies(dict(word_count.collect()))
 cloud.to_file('/home/big/study/wc.jpg')
 ```
 
-![nn](./img/wc.jpg)
+![nn](../img/wc.jpg)
 
 ## nltk 이용한 형태소 분석을 통해 명사만 wordcountong
 
@@ -60,6 +60,6 @@ cloud = wc.generate_from_frequencies(dict(word_count.collect()))
 cloud.to_file('/home/big/study/wc2.jpg')
 ```
 
-![nn](./img/wc2.jpg)
+![nn](../img/wc2.jpg)
 
 ### 결론 : 소네트는 사랑에 대한 이야기를 하는 시이다.
