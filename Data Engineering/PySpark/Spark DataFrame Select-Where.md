@@ -274,7 +274,7 @@ root
 '''
 ```
 
-### SQL
+### Select - SQL
 ```python
 # dataFrame을 테이블로 등록
 class_df.createOrReplaceTempView('class')
@@ -452,7 +452,7 @@ root
 '''
 ```
 
-### SQL
+### Where, Filter - SQL
 ```python
 class_df.printSchema()
 
