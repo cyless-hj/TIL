@@ -1,7 +1,7 @@
 # SET OPERATION
 - 집합 연산
-- 합집합 : or,
-- 교집합 : and,
+- 합집합 : OR,
+- 교집합 : AND,
 - 차집합
 
 ## UNION  : 합집합
