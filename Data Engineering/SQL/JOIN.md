@@ -82,27 +82,3 @@ from employee right join job using(job_code) order by job_code;
 select *
 from employee full join job using(job_code) order by job_code;
 ```
-
---이름에 '형'이 들어가는 사원의 사원ID, 사원이름, 직업명을 출력하세요
-select e.emp_id, e.emp_name, j.job_name 
-from employee e 
-inner join job j
-on(e.job_code = j.job_code)
-where e.emp_name like '%형%';
-
---부서명이 D5, D6 인 사원의 이름, 직업명, 부서코드, 부서명을 출력하세요
-select e.emp_name, d.dept_id, d.dept_title 
-from employee e 
-inner join department d
-on(e.dept_code = d.dept_id)
-where d.dept_id in ('D5', 'D6');
-
---부서가 위치한 국가가 한국이나 일본인 사원의
---이름, 부서명, 지역명, 국가명을 출력하시오
--- employee, department, location, national
-select emp_name, dept_title, local_name, national_name
-from employee e
-inner join department d on(e.dept_code = d.dept_id)
-inner join location l on (d.location_id = l.local_code)
-inner join national n on (l.national_code = n.national_code)
-where national_name in ('한국', '일본');
