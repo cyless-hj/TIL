@@ -1,4 +1,4 @@
-![image](./img/0913 알고리즘 연습문제.PNG)
+![image](./img/Algorithm Practice1.PNG)
 
 ```python
 ARRAY_LENGTH = 5  # 배열의 행과 열 크기(고정)
