@@ -1,4 +1,4 @@
-![nn](./img/Algorithm Practice1.png)
+![nn](./img/AlgorithmPractice1.png)
 
 ```python
 ARRAY_LENGTH = 5  # 배열의 행과 열 크기(고정)
