@@ -13,10 +13,10 @@ where e.emp_name like '%형%';
 2. 부서명이 D5, D6 인 사원의 이름, 직업명, 부서코드, 부서명을 출력하세요
 
 ```SQL
-select e.emp_name, d.dept_id, d.dept_title 
+select e.emp_name, j.job_name, e.dept_code, d.dept_title 
 from employee e 
-inner join department d
-on(e.dept_code = d.dept_id)
+inner join department d on(e.dept_code = d.dept_id)
+inner join job j using(job_code)
 where d.dept_id in ('D5', 'D6');
 ```
 
@@ -50,7 +50,7 @@ where phone not like '010%';
 ```SQL
 select emp_id 사번, emp_name 사원명, salary 급여,
         case when salary >= 5000000 then '고급'
-             when (salary < 5000000) and (salary >= 3000000) then '중급'
+             when salary >= 3000000 then '중급'
              else '초급'
         end 구분
 from employee;
@@ -82,10 +82,8 @@ order by dept_code desc;
 ```SQL
 select emp_name, emp_no, d.dept_title, j.job_name
 from employee e
-inner join department d
-on (e.dept_code = d.dept_id)
-inner join job j
-using (job_code)
+inner join department d on (e.dept_code = d.dept_id)
+inner join job j using (job_code)
 where emp_no like '7%'
 and emp_no like '%2______'
 and emp_name like '전%';
@@ -94,7 +92,7 @@ and emp_name like '전%';
 9. 퇴사한 사람과 퇴사하지 않은 사람의 숫자를 출력하세요
 
 ```SQL
-select count(emp_id)
+select ent_yn, count(*)
 from employee
 group by ent_yn;
 ```
@@ -115,8 +113,8 @@ where e.salary > m.salary;
 ```SQL
 select n.national_name, d.dept_title, avg(e.salary)
 from employee e
-inner join department d on(e.dept_code = d.dept_id)
-inner join location l on (d.location_id = l.local_code)
+right join department d on(e.dept_code = d.dept_id)
+right join location l on (d.location_id = l.local_code)
 inner join national n on (l.national_code = n.national_code)
 group by n.national_name, d.dept_title;
 ```
