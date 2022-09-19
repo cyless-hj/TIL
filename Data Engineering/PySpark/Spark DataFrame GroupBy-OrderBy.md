@@ -3,7 +3,7 @@
 ## groupBy()
 
 - groupBy  : 집계함수를 가지고 있는 GroupData 객체를 반환한다.  
-             GrouopData객체의 집계함수들을 사용해 grouping 된 데이터들의 집계결과를 저장하고 있는 DataFrame을 반환 받을 수 있다.
+             GroupData객체의 집계함수들을 사용해 grouping 된 데이터들의 집계결과를 저장하고 있는 DataFrame을 반환 받을 수 있다.
 
 - **정렬시에 스트링으로 숫자 정렬을 하면 20과 20000을 같은 수준으로 보는 것과 같은 오류가 있다.**
 - **이로인해 StructType을 Integer로 지정하여 정렬을 수행하는 등 알장은 데이터타입을 지정해줘야 한다.**
