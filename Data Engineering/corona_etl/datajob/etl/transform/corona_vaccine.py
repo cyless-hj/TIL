@@ -5,11 +5,11 @@ from infra.util import cal_std_day
 
 class CoronaVaccineTransformer:
     file_name = '/corona_data/vaccine/corona_vaccine_' + cal_std_day(1) + '.json'
-    vaccine = get_spark_session().read.json(file_name, multiLine=True)
-
+    
     @classmethod
     def transform(cls):
-        data = cls.generate_rows()                
+        vaccine = get_spark_session().read.json(cls.file_name, multiLine=True)
+        data = cls.generate_rows(vaccine)                
         vaccine_data = get_spark_session().createDataFrame(data)
         vaccine_data = cls.__stack_dataframe(vaccine_data)
         save_data(DataWarehouse, vaccine_data, 'CORONA_VACCINE')
@@ -30,10 +30,10 @@ class CoronaVaccineTransformer:
         return vaccine_data
 
     @classmethod
-    def generate_rows(cls):
+    def generate_rows(cls, vaccine):
         data = []
 
-        for r1 in cls.vaccine.select(cls.vaccine.data, cls.vaccine.meta.std_day).toLocalIterator():
+        for r1 in vaccine.select(vaccine.data, vaccine.meta.std_day).toLocalIterator():
             for r2 in r1.data:
                 temp = r2.asDict()
                 temp['std_day'] = r1['meta.std_day']
