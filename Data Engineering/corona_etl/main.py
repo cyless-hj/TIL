@@ -6,16 +6,26 @@ from datajob.etl.extract.corona_vaccine import CoronaVaccineExtractor
 from datajob.etl.transform.corona_patient import CoronaPatientTransformer
 from datajob.etl.transform.corona_vaccine import CoronaVaccineTransformer
 
+def transform_execute():
+    CoronaPatientTransformer.transform()
+    CoronaVaccineTransformer.transform()
+
+def datamart_execute():
+    CoPopuDensity.save()
+    CoVaccine.save()
+
 works = {
     'extract':{
         'corona_api': CoronaApiExtractor.extract_data
         ,'corona_vaccine':CoronaVaccineExtractor.extract_data
     }
     ,'transform':{
+        'execute':transform_execute,
         'corona_patient':CoronaPatientTransformer.transform
         ,'corona_vaccine':CoronaVaccineTransformer.transform
     }
     ,'datamart':{
+        'execute':datamart_execute,
         'co_popu_density':CoPopuDensity.save
         ,'co_vaccine':CoVaccine.save
     }
@@ -37,6 +47,7 @@ if __name__ == "__main__":
     if args[2] not in works[args[1]].keys():
         raise Exception('두번째 전달인자가 이상함 >> ' + str(works[args[1]].keys()))
 
+    work = works[args[1]][args[2]]
     work()
 
   
