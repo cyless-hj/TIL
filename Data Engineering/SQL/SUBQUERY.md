@@ -36,9 +36,19 @@ SELECT EMP_ID, EMP_NAME, JOB_CODE, SALARY FROM EMPLOYEE WHERE (SELECT AVG(SALARY
 
 1. 노옹철 사원의 급여보다 많이 받는 직원의 사번, 이름, 부서, 직급, 급여를 조회
 
+```SQL
+select emp_id, emp_name, dept_code, job_code, salary
+from employee
+where salary > (select salary from employee where emp_name = '노옹철');
+```
 
 2. 가장 적은 급여를 받는 직원의 사번, 이름, 급여, 부서, 직급, 입사일을 조회
 
+```SQL
+select emp_id, emp_name, salary, dept_code, job_code, hire_date
+from employee
+where salary = (select min(salary) from employee);
+```
 
 3. 부서별 급여의 합계가 가장 큰 부서를 조회
 
