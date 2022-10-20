@@ -5,6 +5,7 @@
 
 3. jars 설정
 - https://jhleeeme.github.io/read-aws-s3-data-on-spark/ 참조
+- Hadoop 버전 확인하여 jars 파일 선택
 
 4. spark-defaults.conf
 
