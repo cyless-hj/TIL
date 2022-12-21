@@ -11,6 +11,6 @@ def fibonacci(n):
     return dp[n]
 
 count1 = fibonacci(n)
-count2 = n-2
+count2 = n - 2
 
 print(count1, count2)
