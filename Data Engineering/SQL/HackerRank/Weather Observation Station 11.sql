@@ -1,0 +1,4 @@
+SELECT DISTINCT CITY
+FROM STATION
+WHERE NOT REGEXP_LIKE(CITY, '^a|^e|^i|^o|^u','i')
+OR NOT REGEXP_LIKE(CITY, 'a$|e$|i$|o$|u$','i');
