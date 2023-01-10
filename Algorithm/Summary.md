@@ -129,6 +129,8 @@ for i in range(len(cnt)):
 ```
 
 ## 퀵 정렬
+- 시간 복잡도 : O(NlogN)
+    - 최악의 경우 : O(N^2)
 ```python
 array = [5, 7, 9, 0, 3, 1, 6, 2, 4, 8]
 
