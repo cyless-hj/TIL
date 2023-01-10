@@ -13,6 +13,15 @@ def convert_recur(num, base):
 
 ## 진수 변환 (N -> N)
 ```python
+# N진수 -> 10
+print(int('111',2))
+print(int('222',3))
+print(int('333',4))
+print(int('444',5))
+print(int('555',6))
+print(int('FFF',16))
+
+# 10 -> N
 import string
 
 tmp = string.digits+string.ascii_lowercase
