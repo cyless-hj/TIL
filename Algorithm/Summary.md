@@ -11,6 +11,19 @@ def convert_recur(num, base):
     return convert_recur(q, base) + number[r] if q else number[r]
 ```
 
+## 진수 변환 (N -> N)
+```python
+import string
+
+tmp = string.digits+string.ascii_lowercase
+def convert(num, base) :
+    q, r = divmod(num, base)
+    if q == 0 :
+        return tmp[r] 
+    else :
+        return convert(q, base) + tmp[r]
+```
+
 ## 소수 찾기
 ```python
 num = set(range(2, n + 1))
