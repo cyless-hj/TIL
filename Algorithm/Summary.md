@@ -52,6 +52,20 @@ def is_prime_number(x):
     return True # 소수임
 ```
 
+## 약수 구하기
+```python
+def getMyDivisor(n):
+    divisorsList = []
+    for i in range(1, int(n**(1/2)) + 1):
+        if (n % i == 0):
+            divisorsList.append(i) 
+            if ( (i**2) != n) : 
+                divisorsList.append(n // i)
+    divisorsList.sort()   
+    return divisorsList
+```
+- 시간 복잡도 : N^(1/2)
+
 ## 이진 탐색
 - 시간 복잡도 : logN
 - **정렬되어 있어야 한다.**
