@@ -18,6 +18,11 @@
 - Spark 세션을 많이 사용하면 안된다.
     - 세션 사용 수를 줄이는 방법은?
     - 왜 세션을 많이 사용하면 안되는가?
+- RDD, Dataframe, DataSet을 사용할 수 있다.
+    - 프로젝트에서는 DataFrame을 사용했다.
+    - DataSet이 최근에 나왔다.
+    - DataSet을 사용하지 않은 이유는?
+        - Python 기반인 PySpark를 사용했고 PySpark에서는 이를 지원하지 않는다.
 
 ## Kafka
 - Kafka의 속도를 높이기 위한 방법
