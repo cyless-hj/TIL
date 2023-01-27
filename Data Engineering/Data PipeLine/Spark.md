@@ -78,3 +78,5 @@
 - spark.conf.set("spark.sql.files.maxRecordsPerFile",num of records)
     - spark write시에 파일의 record수를 지정하여 해당 record수 별로 파일을 생성 할 수 있는 config
     - write시에 .option("maxRecordsPerFile",100000) 으로도 지정 가능
+
+## Spark Shuffle
