@@ -5,6 +5,7 @@
 - Disk I/O가 아닌 인메모리로 처리
 
 ## Spark 처리방식
+![Spark](https://user-images.githubusercontent.com/75618206/215367008-bac70185-aa65-4c99-9504-11887ea3b306.png)
 
 ### Spark Cluster
 - Driver Program : 우리가 작업하는 환경을 뜻한다 Script(java,python,scala)를 작성하는 것이라고 보면된다.
@@ -26,6 +27,7 @@
 - Stage별로 작업을 나눈다음 
 - Stage별로 들어갈 용량 및 작업량을 파악 하여 Executor에서 Task를 진행한다.
 - 그리고 그 결과값을 Cluster Manager에게 Cluster Manager는 다시 Driver Program에 전달한다.
+![saprk job](https://user-images.githubusercontent.com/75618206/215367021-4ef93419-d374-43e3-b8d9-a92ba191b6e2.png)
 
 ### Partition이란?
 - RDDs나 Dataset를 구성하고 있는 최소 단위 객체이며, 스파크의 성능과 리소스 점유량을 크게 좌우할 수 있는 RDD의 가장 기본적인 개념입니다.
