@@ -141,9 +141,10 @@
 - 스파크는 여러 클러스트에서 데이터를 하나의 파일처럼 다룬다.
 - 어떤 크기의 데이터를 가지고 오더라도 SparkContext 객체 하나로 여러 노드에서 똑같이 다룰 수 있다.
 
-2. 불변성 ( Immutable)
+2. 불변성 (Immutable)
 - 스파크는 immutable(불변)하게 데이터를 다루기 때문에 특정 노드에서 에러가 발생한 경우 복원이 가능하고 다른 노드에서 대체가 가능하다.
 - RDD의 변환 과정은 하나의 비 순환 그래프로 그릴 수 있다.
+![rdd](https://user-images.githubusercontent.com/75618206/215368789-850feec0-f997-410d-9095-d2f6b3baa4d6.png)
 
 - RDD1이 transfer 작업을 거치면 새로운 RDD2가 되는것이 아니라 또 다른 새로운 RDD2 객체가 만들어진다.
 - 그러므로 RDD2가 RDD3으로 transformation 실행중 에러가 발생한다면 RDD2를 복원 후 다른 노드에서 다시 transformation 작업을 실행한다.
