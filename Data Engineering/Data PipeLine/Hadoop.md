@@ -3,6 +3,7 @@
 ## Hadoop이란
 - 대용량의 데이터 처리 및 저장을 위한 자바 기반의 오픈소스 프레임워크
 - 모든 유형의 데이터들의 저장과 처리, 분석이 가능하다.
+![맵리듀스](https://user-images.githubusercontent.com/75618206/215367257-2828282d-9fb6-4eda-a8ab-8818f85d3b80.png)
 
 ## Hadoop의 특징
 - Hadoop은 2개의 프레임워크로 구성되어 있다.
