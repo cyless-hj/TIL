@@ -66,6 +66,20 @@ def getMyDivisor(n):
 ```
 - 시간 복잡도 : N^(1/2)
 
+## 최대 공약수
+```python
+def gcd(x, y):
+   while y:
+       x, y = y, x % y
+   return x
+```
+
+## 최소 공배수
+```python
+def lcm(x, y):
+   return x * y // gcd(x,y)
+```
+
 ## 이진 탐색
 - 시간 복잡도 : logN
 - **정렬되어 있어야 한다.**
