@@ -60,3 +60,22 @@
 <br>
 
 - RDD API를 사용해 RDD의 컬렉션을 필터링하고, 사용자 정의 함수로 컬렉션을 매핑하고, 누적 값 하나로 리듀스하고, 두 RDD를 서로 빼거나 교차하거나 결합하는 등 다양한 작업을 실행할 수 있다.
+
+## Spark Shuffle
+- 스파크에서 연산은 단일 파티션에서 작동   
+- reduceByKey와 같이 특정 키에 매핑된 모든 값에 대한 연산을 수행하기 위해서는 파티션에 흩어진 특정키에 해당하는 값을 하나의 파티션으로 모아 줄 필요가 있음  
+- 모든 키에 대한 모든 값을 찾기 위해 모든 파티션을 탐색하고, 해당하는 값들을 하나의 파티션으로 옮겨오는 과정을 셔플이라고 부른다.  
+- 디스크 IO 또는 네트워크 IO가 발생함으로 비용이 매우 비싼 작업  
+
+ex)   
+- filter : 각 파티션에 있는 하나의 튜플에 대해 조건을 탐색하면 됨으로 셔플 발생 x  
+- reduceByKey : 연산을 시작하기 위해서는 우선적으로 모든 파티션에 분산되어 있는 특정 키 값을 수집해야함으로 셔플 발생 
+- 셔플이 발생하는 함수들 :
+ - subtractByKey
+ - groupBy
+ - foldByKey
+ - reduceByKey
+ - aggregateByKey
+ - transformations of a join of any type
+ - distinct
+ - cogroup
