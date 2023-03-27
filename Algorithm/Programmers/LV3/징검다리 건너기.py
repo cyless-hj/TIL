@@ -11,7 +11,7 @@ def solution(stones, k):
                 else:
                     cnt = 0
             else:
-                    break
+                break
         if cnt < k:
             start = mid + 1
         else:
