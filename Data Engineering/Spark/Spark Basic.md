@@ -79,3 +79,16 @@ ex)
  - transformations of a join of any type
  - distinct
  - cogroup
+
+## Shared Variables
+- 모든 노드에서 사용하기 위한 공유변수
+- 공유변수로 지정한 값은 모든 노드에 중복되어 캐시된다.
+- 반복적으로 사용해야하는 변수라면,
+  스파크의 노드는 네트워크를 통해 통신 하기 때문에 모든 노드에 중복 캐시하는 시스템적 비용보다  
+  네트워크 과정에서 발생하는 오버헤드 비용이 더 많이 발생하게 된다.
+
+## Broadcast Variables
+- 각 노드에 공유되는 읽기 전용 변수
+
+## Accumulator
+- 각 노드에 공유되는 누산기 함수
