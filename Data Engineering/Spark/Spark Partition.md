@@ -46,4 +46,19 @@
 
 #### 셔플링
 - 파티션 간의 물리적인 데이터 이동
-- 새로운 RDD를 만들기 위해 여러 파티션의 데이터를 합칠 때 발생.
+- 새로운 RDD를 만들기 위해 여러 파티션의 데이터를 합칠 때 발생
+
+#### Map task - Shuffle - Reduce task
+- Map : key-value 형태로 데이터를 만듬
+- Reduce : key를 기준으로 데이터를 정렬
+
+#### 셔플링 발생 조건
+##### Partitioner를 명시적으로 변경하는 경우
+- 사용자 정의 Partitioner를 쓰면 반드시 셔플링 발생
+- 이전 HashPartitioner와 다른 HashPartitioner를 사용해도 셔플링 발생
+    - HashPartitioner 객체가 다르더라도 동일한 파티션 개수를 지정했다면 같다고 간주
+    - 이전에 사용한 HashPartitioner와 **파티션 개수가 다른 HashPartitioner**를 사용하면 셔플링 발생
+
+##### Partitioner를 제거하는 경우
+- map과 flatMap은 RDD의 Partitioner를 제거
+- 이 자체로는 셔플링이 발생하지 않지만 RDD에 다른 변환 연산자(aggregateByKey나 foldByKey) 사용하면 기본 Partitioner를 사용했더라도 셔플링 발생
