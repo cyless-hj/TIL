@@ -459,3 +459,10 @@ spark.sql('''
     group by loc
 ''').show()
 ```
+
+### rollup, cube
+- 추가적인 데이터 그루핑 및 집계 기능 제공
+- groupBy는 지정된 칼럼들이 가질 수 있는 값의 모든 조합별로 집계 연산을 수행
+- rollup과 cube는 지정된 칼럼의 부분 집합을 추가로 사용해 집계 연산을 수행
+- cube : 칼럼의 모든 조합(combination) 사용
+- rollup : 지정된 칼럼 순서를 고려한 순열(permutation) 사용
