@@ -376,3 +376,86 @@ spark.sql('''
 ### replace()
 - df.na.replace()
 - 값 치환
+
+## groupBy()
+- groupBy  : 집계함수를 가지고 있는 GroupData 객체를 반환한다.  
+- GrouopData객체의 집계함수들을 사용해 grouping 된 데이터들의 집계결과를 저장하고 있는 DataFrame을 반환 받을 수 있다.
+```python
+schema = StructType([
+    StructField('class_cd', StringType()),
+    StructField('school', StringType()),
+    StructField('class_std_cnt', IntegerType()),
+    StructField('loc', StringType()),
+    StructField('school_type', StringType()),
+    StructField('teaching_type', StringType()),
+])
+
+cdf = spark.read.csv('/dataframe/a_class_info.csv', header = True, schema = schema)
+cdf.printSchema()
+cdf.createOrReplaceTempView('class')
+```
+```python
+print('지역별 교육타입별 학생 숫자를 구해보자.')
+cdf.groupby(cdf.loc, cdf.teaching_type).agg(sum(cdf.class_std_cnt)).show()
+
+print('''지역내 교육타입별 학생 숫자와 평균을 구해보자. 
+단  지역내 교육타입별 학생 숫자의 총 합이 300미만인 데이터는 제외한다.''')
+cdf.groupby(cdf.loc, cdf.teaching_type) \
+        .agg(sum(cdf.class_std_cnt), avg('class_std_cnt')) \
+        .where(sum(cdf.class_std_cnt) >= 300) \
+        .show()
+
+print('컬럼명이 sum(class_std_cnt) 이라니 너무 이상하다. 집계함수를 수행하고 별칭을 붙여보자')
+cdf.groupby(cdf.loc, cdf.teaching_type) \
+        .agg(sum(cdf.class_std_cnt).alias('total'), avg('class_std_cnt').alias('avg')) \
+        .where(sum(cdf.class_std_cnt) >= 300) \
+        .show()
+# 반이 가장 많이 위치한 지역의 학생 수 총합과, 가장 적게 위치한 지역의 학생 수 총 합 간의 차이를 구해보자
+cdf.printSchema()
+base = cdf \
+        .where(col('loc').isNotNull()) \
+        .groupby(cdf.loc) \
+        .agg( count(col('class_cd')).alias('cnt')
+             , sum(col('class_std_cnt')).alias('tot')) 
+
+base.show()
+
+min_max_row = base.select(max('cnt'), min('cnt')).collect()
+min_max_row
+
+base.where(base.cnt.isin(min_max_row[0][0], min_max_row[0][1])) \
+      .select(max(col('tot')) - min(col('tot'))).show()
+```
+
+### SQL
+```python
+print("지역별 교육타입별 학생 숫자를 구해보자.")
+spark.sql('''
+    select loc, teaching_type, sum(class_std_cnt)
+    from class
+    group by loc, teaching_type
+''').show()
+
+print('''지역내 교육타입별 학생 숫자와 평균을 구해보자. 
+단  지역내 교육타입별 학생 숫자의 총 합이 300미만인 데이터는 제외한다.''')
+spark.sql('''
+    select loc, teaching_type, sum(class_std_cnt), avg(class_std_cnt)
+    from class
+    group by loc, teaching_type
+    having sum(class_std_cnt) >= 300
+''').show()
+
+print('컬럼명이 sum(class_std_cnt) 이라니 너무 이상하다. 집계함수를 수행하고 별칭을 붙여보자')
+spark.sql('''
+    select loc, teaching_type, sum(class_std_cnt) as `학생수 합`, avg(class_std_cnt)
+    from class
+    group by loc, teaching_type
+    having sum(class_std_cnt) >= 300
+''').show()
+
+spark.sql('''
+    select loc, count(distinct school), sum(class_std_cnt)
+    from class
+    group by loc
+''').show()
+```
