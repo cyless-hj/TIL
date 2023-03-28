@@ -497,3 +497,55 @@ left_df.join(right_df, on = 'name', how = 'semi').show()
 left_df.join(right_df, on = 'name', how = 'leftanti').show()
 left_df.join(right_df, on = 'name', how = 'anti').show()
 ```
+
+## Set Operation
+- 집합연산
+    - union : 합집합, 결과집합에서 중복되는 행 제거하지 않음
+    - unionAll : 2.0버전이후 union으로 대체됨, union과 동일한 함수
+    - exceptAll : 차집합
+    - intersect : 교집합, 결과집합에서 중복되는 행 제거
+    - intersectAll : 교집합, 결과집합에서 중복되는 행 제거하지 않음
+
+### union, unionAll
+- union과 unionAll은 SQL의 unionAll과 같은 개념
+```python
+# 학생 수가 30명 초과인 반과, 학생 수가 16명 미만인 합집합을 구해보자
+cdf.where(cdf.class_std_cnt >= 30) \
+.union(cdf.where(cdf.class_std_cnt < 16)) \
+.show()
+```
+
+### intersect, intersectAll
+```python
+# intersect와 intersectAll의 차이를 확인하기 위해 중복데이터를 추가하여 새로운 DF로 생성
+temp = cdf.collect()
+
+temp.append({
+    'class_cd':'A33'
+    ,'school':'CIMBB'
+    ,'class_std_cnt':'19'
+    ,'loc':'Urban'
+    ,'school_type':'Non-public'
+    ,'teaching_type':'Standard'    
+})
+
+temp_df = spark.createDataFrame(temp)
+
+# 학교이름이 C로 시작하는 클래스와 학교 위치가 도시인 클래스간의 교집합을 구하시오
+# intersect
+temp_df.where(temp_df.school.like("C%")) \
+.intersect(temp_df.where(temp_df.loc == 'Urban')) \
+.orderBy(temp_df.class_cd).show()
+
+# intersectAll
+temp_df.where(temp_df.school.like("C%")) \
+.intersectAll(temp_df.where(temp_df.loc == 'Urban')) \
+.orderBy(temp_df.class_cd).show()
+```
+
+### exceptAll
+```python
+temp_df.where(temp_df.school.like("C%")) \
+.exceptAll(temp_df.where(temp_df.loc == 'Urban')) \
+.orderBy(temp_df.class_cd).show()
+```
