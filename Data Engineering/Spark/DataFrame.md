@@ -466,3 +466,34 @@ spark.sql('''
 - rollup과 cube는 지정된 칼럼의 부분 집합을 추가로 사용해 집계 연산을 수행
 - cube : 칼럼의 모든 조합(combination) 사용
 - rollup : 지정된 칼럼 순서를 고려한 순열(permutation) 사용
+
+## Join
+### join 종류
+- inner join
+```python
+left_df.join(right_df, on = 'name').show()
+```
+- left outer join
+```python
+left_df.join(right_df, on = 'name', how = 'left').show()
+```
+- right outer join
+```python
+left_df.join(right_df, on = 'name', how = 'right').show()
+```
+- full outer join
+```python
+left_df.join(right_df, on = 'name', how = 'outer').show()
+```
+- leftsemi == semi
+- 교집합, 데이터 결합 X
+```python
+left_df.join(right_df, on = 'name', how = 'leftsemi').show()
+left_df.join(right_df, on = 'name', how = 'semi').show()
+```
+- leftanti == anti
+- 차집합
+```python
+left_df.join(right_df, on = 'name', how = 'leftanti').show()
+left_df.join(right_df, on = 'name', how = 'anti').show()
+```
