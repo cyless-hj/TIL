@@ -9,4 +9,4 @@ def solution(board, h, w):
         if (0 <= w + i < length):
             if board[h][w + i] == color:
                 answer += 1
-    return answer
+    return answer 
